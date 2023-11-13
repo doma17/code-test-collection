@@ -1,2 +1,2 @@
 # Algorithm
-This is a auto push repository for Programmers Coding Test Website
+This is a auto-pushed repository for Programmers Coding Test Practice Website
