@@ -22,7 +22,7 @@ class Solution {
             int b = cost[1];
             int c = cost[2];
 
-            if (!same(a, b)) {
+            if (!(find(a) == find(b))) {
                 unite(a, b);
                 answer += c;
             }
@@ -32,12 +32,9 @@ class Solution {
     }
 
     public int find(int x) {
-        while (x != link[x]) x = link[x];
+        while (x != link[x])
+            x = link[x];
         return x;
-    }
-
-    public boolean same(int a, int b) {
-        return find(a) == find(b);
     }
 
     public void unite(int a, int b) {
