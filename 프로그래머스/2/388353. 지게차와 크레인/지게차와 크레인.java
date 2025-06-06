@@ -29,7 +29,6 @@ class Solution {
         }
             
         for (var request : requests) {
-            visited = new boolean[n + 2][m + 2];
             if (request.length() == 2) { // 크레인
                 String target = request.split("")[0];
                 for (int i = 1; i <= n; i++) {
@@ -41,6 +40,7 @@ class Solution {
                     }
                 }
             } else { // 지게차
+                visited = new boolean[n + 2][m + 2];
                 bfs(0, 0, request);
             }
         }
