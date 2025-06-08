@@ -24,13 +24,11 @@ public class Main {
 
         for (int i = 0; i < m; i++) {
             tmp = br.readLine().split(" ");
+            int a = Integer.parseInt(tmp[1]);
+            int b = Integer.parseInt(tmp[2]);
             if (tmp[0].equals("0")) { // 합집합
-                int a = Integer.parseInt(tmp[1]);
-                int b = Integer.parseInt(tmp[2]);
                 union(a, b);
             } else { // 같은 집합인지 확인
-                int a = Integer.parseInt(tmp[1]);
-                int b = Integer.parseInt(tmp[2]);
                 if (find(a) == find(b)) {
                     sb.append("YES\n");
                 } else {
@@ -44,14 +42,16 @@ public class Main {
     static void union(int x, int y) {
         int pX = find(x);
         int pY = find(y);
-        parents[pY] = pX;
+        if (pX != pY) {
+            parents[pY] = pX;
+        }
     }
 
     // 최상위 노드 검색
     static int find(int x) {
-        if (parents[x] == x) {
-            return x;
+        if (parents[x] != x) {
+            parents[x] = find(parents[x]);
         }
-        return find(parents[x]);
+        return parents[x];
     }
  }
