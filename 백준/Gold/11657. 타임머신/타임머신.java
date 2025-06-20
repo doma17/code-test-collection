@@ -1,69 +1,86 @@
 import java.io.*;
 import java.util.*;
 
-class Main {
-    static class Edge {
-        int a, b, c;
-        Edge(int a, int b, int c) {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-        }
-    }
+public class Main {
 
-    final long MAX_INT = 2000000000;
-    int n, m;
-    ArrayList<Edge> edges;
-    long[] distance;
+    // Default Setting Object
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static StringBuilder sb = new StringBuilder();
 
-    void solution() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
-        edges = new ArrayList<>();
+    static int n, m;
+    static ArrayList<Edge> list;
+    static long[] distance;
+
+    public static void main(String[] args) throws IOException {
+        // Init
+        String[] tmp = br.readLine().split(" ");
+        n = Integer.parseInt(tmp[0]);
+        m = Integer.parseInt(tmp[1]);
+        
+        list = new ArrayList<>();
         distance = new long[n + 1];
-        Arrays.fill(distance, MAX_INT);
 
         for (int i = 0; i < m; i++) {
-            st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(st.nextToken());
-            edges.add(new Edge(a, b, c));
+            tmp = br.readLine().split(" ");
+            int a = Integer.parseInt(tmp[0]);
+            int b = Integer.parseInt(tmp[1]);
+            int c = Integer.parseInt(tmp[2]);
+
+            list.add(new Edge(a, b, c));
         }
 
-        distance[1] = 0;
-        boolean infinite = false;
+        bellmanFord(1);
+    }
 
-        for (int i = 1; i <= n; i++) {
-            for (Edge e : edges) {
-                if (distance[e.a] == MAX_INT) continue;
-                if (distance[e.b] > distance[e.a] + e.c) {
-                    distance[e.b] = distance[e.a] + e.c;
-                    if (i == n) infinite = true;
+    static void bellmanFord(int start)throws IOException {
+        Arrays.fill(distance, Integer.MAX_VALUE);
+        distance[start] = 0;
+
+        // 최소 거리 탐색
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                Edge edge = list.get(j);
+                if (distance[edge.from] == Integer.MAX_VALUE) continue;
+                else if (distance[edge.to] > distance[edge.from] + edge.cost) {
+                    distance[edge.to] = distance[edge.from] + edge.cost;
                 }
             }
         }
 
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        if (infinite) {
-            bw.write("-1\n");
-        } else {
-            for (int i = 2; i <= n; i++) {
-                if (distance[i] == MAX_INT) {
+        // 음수 사이클 검증
+        boolean negativeCycle = false;
+        for (int i = 0; i < m; i++) {
+            Edge edge = list.get(i);
+            if (distance[edge.from] == Integer.MAX_VALUE) continue;
+            else if (distance[edge.to] > distance[edge.from] + edge.cost) {
+                negativeCycle = true;
+            }
+        }
+
+        // Output
+        if (!negativeCycle) {
+            for (int i = 2; i <= n; i++) {    
+                if (distance[i] == Integer.MAX_VALUE) {
                     bw.write("-1\n");
                 } else {
                     bw.write(distance[i] + "\n");
                 }
             }
+        } else {
+            bw.write("-1\n");
         }
         bw.flush();
         bw.close();
-        br.close();
     }
 
-    public static void main(String[] args) throws IOException {
-        new Main().solution();
+    static class Edge {
+        int from, to, cost;
+
+        public Edge(int from, int to, int cost) {
+            this.from =from;
+            this.to = to;
+            this.cost = cost;
+        } 
     }
 }
