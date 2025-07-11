@@ -6,6 +6,5 @@ FROM FOOD_PRODUCT P INNER JOIN (SELECT CATEGORY, MAX(PRICE) AS MAX_PRICE
                                FROM FOOD_PRODUCT
                                WHERE CATEGORY IN ('과자', '국', '김치', '식용유')
                                GROUP BY CATEGORY) M
-    ON P.CATEGORY = M.CATEGORY
-    AND P.PRICE = M.MAX_PRICE
+    ON P.CATEGORY = M.CATEGORY AND P.PRICE = M.MAX_PRICE
 ORDER BY 2 DESC
