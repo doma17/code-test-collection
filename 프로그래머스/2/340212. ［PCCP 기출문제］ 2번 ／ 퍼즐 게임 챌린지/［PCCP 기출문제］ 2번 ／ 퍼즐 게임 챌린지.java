@@ -1,10 +1,14 @@
 import java.util.*;
 
+/** Parametric Search를 이용한 탐색 문제
+ *  예외처리: 정답 level이 1인 경우는?
+ */
 class Solution {
     public int solution(int[] diffs, int[] times, long limit) {
         int left = 1;
         int right = 100000;
         int mid = 0;
+        
         while (left <= right) {
             mid = (left + right) / 2;
             
@@ -17,10 +21,9 @@ class Solution {
         return left;
     }
     
-    
     public boolean canSolvePuzzleInLimit(int[] diffs, int[] times, long limit, int level) {
-        long solve_time = 0;
-        int time_prev = 0;
+        long solve_time = 0; // 총 문제 풀이 시간
+        int time_prev = 0; // 이전 퍼즐 소요 시간
         
         for (int i = 0; i < diffs.length; i++) {
             int cur_diff = diffs[i];
