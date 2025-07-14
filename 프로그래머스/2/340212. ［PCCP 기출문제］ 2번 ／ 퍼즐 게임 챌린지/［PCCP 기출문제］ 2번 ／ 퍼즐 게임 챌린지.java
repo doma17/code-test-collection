@@ -2,6 +2,7 @@ import java.util.*;
 
 /** Parametric Search를 이용한 탐색 문제
  *  예외처리: 정답 level이 1인 경우는?
+ *  소요시간: 20분
  */
 class Solution {
     public int solution(int[] diffs, int[] times, long limit) {
