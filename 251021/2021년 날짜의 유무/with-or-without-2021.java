@@ -8,6 +8,8 @@ public class Main {
 
         if (m > 12) {
             System.out.println("No");
+        } else if ((m == 4 || m == 6 || m == 9 || m == 12) && d > 30) {
+            System.out.println("No");
         } else if (d > 31) {
             System.out.println("No");
         } else if (m == 2 && d > 28) {
