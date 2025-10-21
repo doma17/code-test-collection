@@ -12,7 +12,7 @@ public class Main {
             b[i] = sc.nextInt();
         // Please write your code here.
 
-        for (int i = 0; i < n1; i++) {
+        for (int i = 0; i + n2 < n1; i++) {
             for (int j = 0; j < n2; j++) {
                 if (a[i + j] != b[j]) break;
                 if (j == n2 - 1) {
