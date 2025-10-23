@@ -12,9 +12,12 @@ public class Main {
             int score1 = sc.nextInt();
             int score2 = sc.nextInt();
             int score3 = sc.nextInt();
-            pq.add(new Student(ko))
+            pq.add(new Student(name, score1, score2, score3));
         }
         
+        while(!pq.isEmpty()) {
+            pq.poll().printContext();
+        }
     }
 }
 
@@ -23,6 +26,7 @@ class Student implements Comparable<Student> {
     int kor, eng, math;
 
     public Student(String name, int kor, int eng, int math){
+        this.name = name;
         this.kor = kor;
         this.eng = eng;
         this.math = math;
@@ -31,5 +35,9 @@ class Student implements Comparable<Student> {
     @Override
     public int compareTo(Student student) {  // 총 점수 기준 오름차순 정렬
         return (this.kor + this.eng + this.math) - (student.kor + student.eng + student.math);
+    }
+
+    public void printContext() {
+        System.out.println(name + " " + kor + " " + eng + " " + math);
     }
 };
