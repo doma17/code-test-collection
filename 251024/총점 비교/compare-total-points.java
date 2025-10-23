@@ -1,22 +1,28 @@
 import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+
+        PriorityQueue<Student> pq = new PriorityQueue<>();
+
         for (int i = 0; i < n; i++) {
             String name = sc.next();
             int score1 = sc.nextInt();
             int score2 = sc.nextInt();
             int score3 = sc.nextInt();
+            pq.add(new Student(ko))
         }
-        // Please write your code here.
+        
     }
 }
 
 class Student implements Comparable<Student> {
+    String name;
     int kor, eng, math;
 
-    public Student(int kor, int eng, int math){
+    public Student(String name, int kor, int eng, int math){
         this.kor = kor;
         this.eng = eng;
         this.math = math;
