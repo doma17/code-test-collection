@@ -14,20 +14,20 @@ public class Main {
         int maxSum = 0;
         for (int i = 1; i <= n; i++) {
             int sum = 0;
-            int[] a = arr.clone();
+            int curIndex = i;
 
             for (int j = 0; j < m; j++) {
-                sum += swap(a, i, a[i]);
+                int value = arr[curIndex];
+                sum += value;
+
+                int nextIndex = value;
+                if (nextIndex < 1 || nextIndex > n) break;
+
+                curIndex = nextIndex;
             }
+
             maxSum = Math.max(maxSum, sum);
         }
         System.out.println(maxSum);
-    }
-
-    private static int swap(int[] a, int i, int j) {
-        int tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-        return tmp;
     }
 }
