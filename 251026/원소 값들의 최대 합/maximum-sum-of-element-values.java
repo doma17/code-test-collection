@@ -12,9 +12,9 @@ public class Main {
         // Please write your code here.
 
         int maxSum = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             int sum = 0;
-            int[] a = arr;
+            int[] a = arr.clone();
 
             for (int j = 0; j < m; j++) {
                 sum += swap(a, i, a[i]);
