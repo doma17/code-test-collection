@@ -1,15 +1,19 @@
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] tmp = br.readLine().split(" ");
+        int n = Integer.parseInt(tmp[0]);
+        int m = Integer.parseInt(tmp[1]);
         int[] arr = new int[n + 1];
+
+        tmp = br.readLine().split(" ");
         for (int i = 1; i <= n; i++) {
-            arr[i] = sc.nextInt();
+            arr[i] = Integer.parseInt(tmp[i - 1]);
         }
-        // Please write your code here.
 
         int maxSum = 0;
         for (int i = 1; i <= n; i++) {
