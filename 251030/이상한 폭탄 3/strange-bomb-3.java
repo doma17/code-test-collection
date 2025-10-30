@@ -33,9 +33,7 @@ public class Main {
                 }
             }
 
-            if (cnt == 1) {
-                answer = 0;
-            } else if (maxCnt == cnt) {
+            if (maxCnt == cnt) {
                 if (answer < b) {
                     answer = b;
                 }
@@ -44,6 +42,7 @@ public class Main {
                 maxCnt = cnt;
             }
         }
-        System.out.println(answer);
+        if (answer == 1) System.out.println(0);
+        else System.out.println(answer);
     }
 }
