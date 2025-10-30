@@ -9,13 +9,18 @@ public class Main {
         int d = sc.nextInt();
         // Please write your code here.
 
-        Set<Integer> set = new HashSet<>();
+        boolean[] clean = new boolean[101];
         for (int i = a; i <= b; i++) {
-            set.add(i);
+            clean[i] = true;
         }
         for (int i = c; i <= d; i++) {
-            set.add(i);
+            clean[i] = true;
         }
-        System.out.println(set.size() - 1);
+
+        int count = 0;
+        for (int i = 0; i < 100; i++) {
+            if (clean[i] && clean[i + 1]) count++;
+        }
+        System.out.println(count);
     }
 }
