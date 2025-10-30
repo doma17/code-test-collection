@@ -42,7 +42,7 @@ public class Main {
                 maxCnt = cnt;
             }
         }
-        if (answer == 1) System.out.println(0);
+        if (maxCnt == 1) System.out.println(0);
         else System.out.println(answer);
     }
 }
