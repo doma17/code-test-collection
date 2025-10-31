@@ -14,7 +14,7 @@ public class Main {
             int curDir = map.getOrDefault(pigeon, -1);
             if (curDir != -1) {
                 if (curDir != moveDir) {
-                    map.put(pigeon, curDir * -1);
+                    map.put(pigeon, moveDir);
                     count++;
                 }
             } else {
