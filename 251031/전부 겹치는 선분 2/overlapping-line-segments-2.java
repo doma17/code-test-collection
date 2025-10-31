@@ -23,6 +23,6 @@ public class Main {
         }
 
         if (isPass) System.out.println("Yes");
-        else System.out.println("NO");
+        else System.out.println("No");
     }
 }
