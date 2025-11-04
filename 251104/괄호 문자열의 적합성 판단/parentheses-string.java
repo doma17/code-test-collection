@@ -5,6 +5,7 @@ public class Main {
         String str = sc.next();
         
         Stack<Integer> st = new Stack<>();
+        boolean is = true;
         try {
             for (int i = 0; i < str.length(); i++) {
                 char c = str.charAt(i);
@@ -17,12 +18,12 @@ public class Main {
             }
         } catch(Exception e) {
             System.out.println("No");
+            is = false;
         }
-        
 
-        if (st.isEmpty()) {
+        if (st.isEmpty() && is) {
             System.out.println("Yes");
-        } else {
+        } else if (is) {
             System.out.println("No");
         }
     }
