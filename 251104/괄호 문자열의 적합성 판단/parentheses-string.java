@@ -5,15 +5,20 @@ public class Main {
         String str = sc.next();
         
         Stack<Integer> st = new Stack<>();
-        for (int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
-            
-            if (c == '(') {
-                st.push(1);
-            } else if (c == ')') {
-                st.pop();
+        try {
+            for (int i = 0; i < str.length(); i++) {
+                char c = str.charAt(i);
+                
+                if (c == '(') {
+                    st.push(1);
+                } else if (c == ')') {
+                    st.pop();
+                }
             }
+        } catch(Exception e) {
+            System.out.println("No");
         }
+        
 
         if (st.isEmpty()) {
             System.out.println("Yes");
