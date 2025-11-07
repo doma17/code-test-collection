@@ -7,14 +7,25 @@ public class Main {
         String seats = sc.next();
         
         int maxLength = 0;
-        int cnt = 0;
-        for (char x : seats.toCharArray()) {
+        int minLength = Integer.MAX_VALUE;
+        int cnt = 1;
+
+        char[] arr = seats.toCharArray();
+        for (int i = 1; i < arr.length; i++) {
+            char x = arr[i];
             if (x == '1') {
                 maxLength = Math.max(maxLength, cnt);
-                cnt = 0;
+                minLength = Math.min(minLength, cnt);
+                cnt = 1;
+            } else {
+                cnt++;
             }
-            cnt++;
         }
-        System.out.println(maxLength / 2);
+        
+        if (minLength <= maxLength / 2) {
+            System.out.println(minLength);
+        } else {
+            System.out.println(maxLength / 2);
+        }
     }
 }
