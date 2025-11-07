@@ -13,7 +13,7 @@ public class Main {
         int ans = 2;
         if (arr[0] + 1 == arr[1] && arr[1] + 1 == arr[2]) {
             ans = 0;
-        } else if (arr[2] - arr[1] == 1 || arr[1] - arr[0] == 1) {
+        } else if (arr[2] - arr[1] == 2 || arr[1] - arr[0] == 2) {
             ans = 1;
         }
         System.out.println(ans);
