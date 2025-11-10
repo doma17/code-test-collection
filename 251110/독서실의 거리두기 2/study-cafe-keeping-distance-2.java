@@ -31,7 +31,7 @@ public class Main {
 
         int lastLength = (arr.length - 1) - last;
         maxDist = Math.max(maxDist, lastLength);
-        int midLength = (maxLength + 1) / 2;
+        int midLength = maxLength / 2;
         maxDist = Math.max(maxDist, midLength);
 
         if (maxDist < minLength) System.out.println(maxDist);
