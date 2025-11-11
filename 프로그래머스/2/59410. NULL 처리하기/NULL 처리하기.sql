@@ -1,0 +1,5 @@
+SELECT
+    i.ANIMAL_TYPE,
+    IFNULL(i.NAME, 'No name') AS 'NAME',
+    i.SEX_UPON_INTAKE
+FROM ANIMAL_INS i
