@@ -15,8 +15,13 @@ public class Main {
             }
             sb.append("1");
         }
-        sb.append(a.substring(i + 1, a.length()));
-        
+        if (i + 1 <= a.length()) {
+            sb.append(a.substring(i + 1, a.length()));
+        } else {
+            sb.setLength(sb.length() - 1);
+            sb.append(0);
+        }
+            
         String originA = sb.toString();
         int answer = Integer.parseInt(originA, 2);
         System.out.println(answer);
