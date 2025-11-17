@@ -9,7 +9,7 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         
-        int answer = 0;
+        int answer = -1;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 if (!isNoCarry(arr[i], arr[j])) continue;
