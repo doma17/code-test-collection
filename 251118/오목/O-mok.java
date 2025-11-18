@@ -97,7 +97,11 @@ public class Main {
             } 
         } 
         
-        System.out.println(winColor);
-        System.out.println(winX + " " + winY);
+        if (winColor == 0) {
+            System.out.println(0);
+        } else {
+            System.out.println(winColor);
+            System.out.println(winX + " " + winY);
+        }
     }
 }
