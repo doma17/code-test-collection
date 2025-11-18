@@ -87,7 +87,7 @@ public class Main {
                     }
                     if (isWin) {
                         winColor = curColor;
-                        winX = i - 3;
+                        winX = i - 1;
                         winY = j + 3;
                         
                         winnerFound = true;
