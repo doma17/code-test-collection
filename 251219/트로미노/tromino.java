@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -28,14 +28,15 @@ public class Main {
 
     private static int getMaxSumTarget(int r, int c) {
         int maxSum = 0;
+        int center = grid[r][c];
 
-        if (r - 1 >= 0 && r + 1 < n) {
-            maxSum = Math.max(maxSum, grid[r - 1][c] + grid[r][c] + grid[r + 1][c]);
-        }
+        if (c - 1 >= 0 && c + 1 < m) maxSum = Math.max(maxSum, grid[r][c - 1] + center + grid[r][c + 1]);
+        if (r - 1 >= 0 && r + 1 < n) maxSum = Math.max(maxSum, grid[r - 1][c] + center + grid[r + 1][c]);
+        if (r + 1 < n && c + 1 < m) maxSum = Math.max(maxSum, center + grid[r + 1][c] + grid[r][c + 1]);
+        if (r + 1 < n && c - 1 >= 0) maxSum = Math.max(maxSum, center + grid[r + 1][c] + grid[r][c - 1]);
+        if (r - 1 >= 0 && c + 1 < m) maxSum = Math.max(maxSum, center + grid[r - 1][c] + grid[r][c + 1]);
+        if (r - 1 >= 0 && c - 1 >= 0) maxSum = Math.max(maxSum, center + grid[r - 1][c] + grid[r][c - 1]);
 
-        if (r + 1 < n && c + 1 < m) {
-            maxSum = Math.max(maxSum, grid[r][c] + grid[r + 1][c] + grid[r][c + 1]);
-        }
         return maxSum;
     }
 }
