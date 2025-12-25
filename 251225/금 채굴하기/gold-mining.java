@@ -10,10 +10,10 @@ public class Main {
             for (int j = 0; j < n; j++)
                 grid[i][j] = sc.nextInt();
         
-        int answer = -1;
+        int answer = 0;
         for (int r = 0; r < n; r++) {
             for (int c = 0; c < n; c++) {
-                for (int k = 1; k < n; k++) {
+                for (int k = 0; k < n; k++) {
                     answer = Math.max(answer, getMaxGoldInK(r, c, k));
                 }
             }
@@ -37,7 +37,9 @@ public class Main {
         int goldCost = gold * m;
         int digCost = k * k + (k + 1) * (k + 1);
 
-        if (digCost >= goldCost) return -1;
+        // System.out.println(r + " " + c + " " + k + " : " + goldCost + " " + digCost);
+
+        if (digCost > goldCost) return -1;
         return gold;
     }
 }
