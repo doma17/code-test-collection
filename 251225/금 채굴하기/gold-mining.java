@@ -13,7 +13,13 @@ public class Main {
         int answer = 0;
         for (int r = 0; r < n; r++) {
             for (int c = 0; c < n; c++) {
-                for (int k = 0; k < n; k++) {
+                for (int k = 0; k <= n; k++) {
+                    // int output = getMaxGoldInK(r, c, k);
+                    // if (answer <= output) {
+                    //     System.out.println(r + " " + c + " " + k  + " " + answer + " " + output);
+                    //     answer = output;
+                    // }
+
                     answer = Math.max(answer, getMaxGoldInK(r, c, k));
                 }
             }
