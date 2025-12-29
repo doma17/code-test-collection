@@ -14,7 +14,7 @@ public class Main {
             for (int j = 0; j < m; j++)
                 grid[i][j] = sc.nextInt();
         
-        int answer = 0;
+        int answer = -1;
         for (int r = 0; r < n; r++) {
             for (int c = 0; c < m; c++) {
                 answer = Math.max(answer, getSizePositiveRentangle(r, c));
@@ -24,7 +24,7 @@ public class Main {
     }
 
     private static int getSizePositiveRentangle(int r, int c) {
-        int maxSize = 0;
+        int maxSize = -1;
         for (int r1 = r; r1 < n; r1++) {
             for (int c1 = c; c1 < m; c1++) {
                 
