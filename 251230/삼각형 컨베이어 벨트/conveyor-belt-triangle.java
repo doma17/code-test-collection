@@ -17,11 +17,13 @@ public class Main {
             arr[0] = temp;
         }
 
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n * 3; i++) {
-            System.out.print(arr[i] + " ");
+            sb.append(arr[i] + " ");
             if ((i + 1) % n == 0) {
-                System.out.println();
+                sb.append("\n");
             }
         }
+        System.out.println(sb.toString());
     }
 }
