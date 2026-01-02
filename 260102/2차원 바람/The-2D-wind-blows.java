@@ -1,40 +1,49 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 public class Main {
 
     static int n, m, q;
     static int[][] building;
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        m = sc.nextInt();
-        q = sc.nextInt();
-        building = new int[n][m];
-
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                building[i][j] = sc.nextInt();
-        int[][] queries = new int[q][4];
-        for (int i = 0; i < q; i++)
-            for (int j = 0; j < 4; j++)
-                queries[i][j] = sc.nextInt() - 1;
-
-        
-        for (int x = 0; x < q; x++) {
-            rotate(queries[x][0], queries[x][1], queries[x][2], queries[x][3]);
-            building = calAllAverage(queries[x][0], queries[x][1], queries[x][2], queries[x][3]);
-        }
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                System.out.print(building[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
     static int[] dr = {1, -1, 0, 0};
     static int[] dc = {0, 0, 1, -1};
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        q = Integer.parseInt(st.nextToken());
+
+        building = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < m; j++) {
+                building[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
+
+        for (int k = 0; k < q; k++) {
+            st = new StringTokenizer(br.readLine());
+            int r1 = Integer.parseInt(st.nextToken()) - 1;
+            int c1 = Integer.parseInt(st.nextToken()) - 1;
+            int r2 = Integer.parseInt(st.nextToken()) - 1;
+            int c2 = Integer.parseInt(st.nextToken()) - 1;
+
+            rotate(r1, c1, r2, c2);
+            building = calAllAverage(r1, c1, r2, c2);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                sb.append(building[i][j]).append(" ");
+            }
+            sb.append("\n");
+        }
+        System.out.print(sb);
+    }
 
     private static int[][] calAllAverage(int r1, int c1, int r2, int c2) {
         int[][] result = new int[n][m];
