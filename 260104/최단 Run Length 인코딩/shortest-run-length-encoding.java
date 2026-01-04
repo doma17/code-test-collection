@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String A = sc.next();
         
-        int answer = A.length();
+        int answer = Integer.MAX_VALUE;
         char first = A.charAt(0);
         for (int i = 0; i < A.length(); i++) {
             // 문자열 Shift
