@@ -52,18 +52,14 @@ public class Main {
             list.add(new int[] {curR, curC});
         }
 
-        // for (int x : dp) {
-        //     System.out.print(x + " ");
-        // }
-        // System.out.println();
-
+        // 시계 방향
         if (dir == 1) {
             int tmp = dp[0];
             for (int i = 0; i < dp.length - 1; i++) {
                 dp[i] = dp[i + 1];
             }
             dp[dp.length - 1] = tmp;
-        } else {
+        } else { // 반시계 방향
             int tmp = dp[dp.length - 1];
             for (int i = dp.length - 1; i > 0; i--) {
                 dp[i] = dp[i - 1];
@@ -77,11 +73,13 @@ public class Main {
             grid[coord[0]][coord[1]] = dp[idx++];
         }
 
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print(grid[i][j] + " ");
+                sb.append(grid[i][j] + " ");
             }
-            System.out.println();
+            if (i + 1 < n) sb.append("\n");
         }
+        System.out.println(sb);
     }
 }
