@@ -35,28 +35,28 @@ public class Main {
                     grid[r][3 - c] = result[c];
                 }
             }
-        } else if (dir == 'U') {
-            for (int c = 0; c < 4; c++) {
-                int[] arr = new int[4];
-                for (int r = 0; r < 4; r++) {
-                    arr[r] = grid[3 - r][c];
-                }
-
-                int[] result = mergeArr(arr);
-                for (int r = 0; r < 4; r++) {
-                    arr[r] = grid[3 - r][c];
-                }
-            }
         } else if (dir == 'D') {
             for (int c = 0; c < 4; c++) {
                 int[] arr = new int[4];
                 for (int r = 0; r < 4; r++) {
+                    arr[r] = grid[3 - r][c];
+                }
+
+                int[] result = mergeArr(arr);
+                for (int r = 0; r < 4; r++) {
+                    grid[3 - r][c] = result[r];
+                }
+            }
+        } else if (dir == 'U') {
+            for (int c = 0; c < 4; c++) {
+                int[] arr = new int[4];
+                for (int r = 0; r < 4; r++) {
                     arr[r] = grid[r][c];
                 }
 
                 int[] result = mergeArr(arr);
                 for (int r = 0; r < 4; r++) {
-                    arr[r] = grid[r][c];
+                    grid[r][c] = result[r];
                 }
             }
         }
