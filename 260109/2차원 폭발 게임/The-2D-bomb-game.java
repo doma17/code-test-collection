@@ -1,46 +1,45 @@
 import java.util.*;
+import java.io.*; // BufferedReader, InputStreamReader 등을 위해 추가
 
 public class Main {
 
     static int n, m, k;
     static int[][] grid;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        m = sc.nextInt();
-        k = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        // BufferedReader와 StringTokenizer를 사용한 빠른 입력 설정
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        k = Integer.parseInt(st.nextToken());
+        
         grid = new int[n][n];
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                grid[i][j] = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < n; j++) {
+                grid[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
         
         for (int i = 0; i < k; i++) {
-            boolean t = true;
-            while (t) {                
-                t = bomb();
+            while (bomb()) {
                 gravity();
             }
             pivot();
             gravity();
         }
-        boolean t = true;
-        while (t) {                
-            t = bomb();
+        while (bomb()) {                
             gravity();
         }
 
         int answer = 0;
-        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                sb.append(grid[i][j] + " ");
                 if (grid[i][j] != 0) answer++;
             }
-                
-            if (i + 1 != n) sb.append("\n");
         }
-        // System.out.println(sb);
         System.out.println(answer);
     }
 
@@ -77,19 +76,21 @@ public class Main {
         for (int j = 0; j < n; j++) {
             int idx = n - 1;
             for (int i = n - 1; i >= 0; i--) {
-                if (grid[i][j] != 0) tmp[idx--][j] = grid[i][j];   
+                if (grid[i][j] != 0) {
+                    tmp[idx--][j] = grid[i][j];
+                }
             }
         }
         grid = tmp;
     }
 
-    // 피봇
+    // 피봇 (90도 시계방향 회전)
     private static void pivot() {
-        // 시계방향으로 90도 회전
         int[][] tmp = new int[n][n];
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < n; j++) {
                 tmp[j][n - 1 - i] = grid[i][j];
+            }
         } 
         grid = tmp;
     }
