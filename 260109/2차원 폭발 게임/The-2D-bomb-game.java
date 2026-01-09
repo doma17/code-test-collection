@@ -16,8 +16,11 @@ public class Main {
                 grid[i][j] = sc.nextInt();
         
         for (int i = 0; i < k; i++) {
-            bomb();
-            gravity();
+            boolean t = bomb();
+            while (t) {                
+                gravity();
+                t = bomb();
+            }
             pivot();
             gravity();
         }
@@ -38,8 +41,8 @@ public class Main {
     }
 
     // 폭탄 터지기 로직
-    private static void bomb() {
-        // 열 기준으로 연속 m개인 곳을 찾아서 0으로 변환
+    private static boolean bomb() {
+        boolean isExploded = false;
         for (int j = 0; j < n; j++) {
             int i = 0;
             while (i < n) {
@@ -53,6 +56,7 @@ public class Main {
                 }
 
                 if (end - i >= m) {
+                    isExploded = true;
                     for (int x = i; x < end; x++){
                         grid[x][j] = 0;
                     }
@@ -60,6 +64,7 @@ public class Main {
                 i = end;
             }
         }
+        return isExploded;
     }
 
     // 중력 로직
