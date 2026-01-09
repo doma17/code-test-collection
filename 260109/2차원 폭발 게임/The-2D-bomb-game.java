@@ -16,15 +16,19 @@ public class Main {
                 grid[i][j] = sc.nextInt();
         
         for (int i = 0; i < k; i++) {
-            boolean t = bomb();
+            boolean t = true;
             while (t) {                
-                gravity();
                 t = bomb();
+                gravity();
             }
             pivot();
             gravity();
         }
-        bomb();
+        boolean t = true;
+        while (t) {                
+            t = bomb();
+            gravity();
+        }
 
         int answer = 0;
         StringBuilder sb = new StringBuilder();
