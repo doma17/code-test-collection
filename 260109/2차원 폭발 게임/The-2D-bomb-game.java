@@ -1,5 +1,5 @@
 import java.util.*;
-import java.io.*; // BufferedReader, InputStreamReader 등을 위해 추가
+import java.io.*;
 
 public class Main {
 
@@ -7,7 +7,6 @@ public class Main {
     static int[][] grid;
 
     public static void main(String[] args) throws IOException {
-        // BufferedReader와 StringTokenizer를 사용한 빠른 입력 설정
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
