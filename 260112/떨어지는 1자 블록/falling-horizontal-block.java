@@ -14,7 +14,7 @@ public class Main {
         }
         
 
-        int contactR = 0;
+        int contactR = n - 1;
         for (int r = 0; r < n; r++) {
             boolean isContacted = false;
             for (int c = k - 1; c < k + m - 1; c++) {
