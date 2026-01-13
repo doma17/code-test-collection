@@ -1,17 +1,22 @@
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+
 public class Main {
 
     static int[] dx = {0, 1, 0, -1};
     static int[] dy = {1, 0, -1, 0};
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int x = sc.nextInt() - 1;
-        int y = sc.nextInt() - 1;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        int n = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        int x = Integer.parseInt(st.nextToken()) - 1;
+        int y = Integer.parseInt(st.nextToken()) - 1;
         char[][] maze = new char[n][n];
         for (int i = 0; i < n; i++) {
-            String line = sc.next();
+            String line = br.readLine();
             for (int j = 0; j < n; j++) {
                 maze[i][j] = line.charAt(j);
             }
@@ -21,8 +26,16 @@ public class Main {
         int dir = 0;
         int curX = x;
         int curY = y;
+        int[][] visitedCount = new int[n][n];
 
         while (true) {
+            // 한 장소에 4번 이상 머무르면 무한 반복으로 간주
+            visitedCount[curX][curY]++;
+            if (visitedCount[curX][curY] > 4) {
+                System.out.println(-1);
+                return;
+            }
+
             int rDir = (dir + 1) % 4;
             int rx = curX + dx[rDir];
             int ry = curY + dy[rDir];
@@ -54,15 +67,11 @@ public class Main {
                     count++;
                 } else { // 정면이 벽
                     dir = (dir + 3) % 4;
-                    continue;
                 }
             }
 
-            if (curX == x && curY == y) {
-                count = -1;
-                break;
-            }
         }
+
         System.out.println(count);
     }
 }
