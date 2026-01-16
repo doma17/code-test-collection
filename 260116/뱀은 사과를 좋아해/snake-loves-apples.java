@@ -15,6 +15,7 @@ public class Main {
 
         // 사과 : -1, 뱀머리 : 1
         dp = new int[n][n];
+        dp[0][0] = 1;
 
         // 사과위치 입력
         for (int i = 0; i < m; i++) {
@@ -53,7 +54,7 @@ public class Main {
                     break;
                 }
                 
-                if (dp[nx][ny] > 0) { 
+                if (dp[nx][ny] > 0 && dp[nx][ny] != tail) { 
                     isEnd = true;
                     break;
                 }
@@ -88,7 +89,6 @@ public class Main {
                         ty = ny;
                     }
                 }
-
                 x = nx;
                 y = ny;
             }
