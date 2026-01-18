@@ -16,8 +16,8 @@ public class Main {
         
         ArrayList<Point> startPointList = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            startPointList.add(new Point(0, i, 0));
-            startPointList.add(new Point(n - 1, i, 1));
+            startPointList.add(new Point(0, i, 1));
+            startPointList.add(new Point(n - 1, i, 0));
             startPointList.add(new Point(i, n - 1, 2));
             startPointList.add(new Point(i, 0, 3));
         }
@@ -32,19 +32,17 @@ public class Main {
 
             while (true) {
                 time++;
+                if (grid[r][c] != 0) {
+                    d = switchDir(d, grid[r][c]);
+                }
+
                 int nr = r + dr[d];
                 int nc = c + dc[d];
 
                 if (nr < 0 || nr >= n || nc < 0 || nc >= n) break;
 
-                if (grid[nr][nc] != 0) {
-                    d = switchDir(d, grid[nr][nc]);
-                }
-
                 r = nr;
                 c = nc;
-
-                if (time >= 100) System.out.println("TIME BREAK");
             }
             // System.out.println(maxTime + " " + time + " " + p.r + " " + p.c + " " + p.dir);
             maxTime = Math.max(maxTime, time);
@@ -54,13 +52,13 @@ public class Main {
 
     private static int switchDir(int dir, int shape) {
         if (dir == 0) {
-            return shape == 1 ? 2 : 3;
-        } else if (dir == 1) {
             return shape == 1 ? 3 : 2;
+        } else if (dir == 1) {
+            return shape == 1 ? 2 : 3;
         } else if (dir == 2) {
-            return shape == 1 ? 0 : 1;
-        } else {
             return shape == 1 ? 1 : 0;
+        } else {
+            return shape == 1 ? 0 : 1;
         }
     }
 
