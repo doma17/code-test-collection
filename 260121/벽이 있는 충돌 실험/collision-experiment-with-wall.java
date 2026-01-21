@@ -1,22 +1,28 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 public class Main {
 
     static int[] dr = {-1, 1, 0, 0};
     static int[] dc = {0, 0, 1, -1};
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-        while(T-- > 0) {
-            int N = sc.nextInt();
-            int M = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
+
+        while (T-- > 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
 
             int[][] grid = new int[N][N];
             int[][] count = new int[N][N];
+
             for (int i = 0; i < M; i++) {
-                int x = sc.nextInt() - 1;
-                int y = sc.nextInt() - 1;
-                char d = sc.next().charAt(0);
+                st = new StringTokenizer(br.readLine());
+                int r = Integer.parseInt(st.nextToken()) - 1;
+                int c = Integer.parseInt(st.nextToken()) - 1;
+                char d = st.nextToken().charAt(0);
 
                 int dir = 0;
                 switch (d) {
@@ -26,14 +32,15 @@ public class Main {
                     case 'L': dir = 4; break;
                 }
 
-                grid[x][y] = dir;
-                count[x][y]++;
+                grid[r][c] = dir;
+                count[r][c]++;
             }
-            
-            int x = N * 2;
-            while (x-- > 0) {
+
+            int time = N * 2;
+            while (time-- > 0) {
                 int[][] tmpGrid = new int[N][N];
                 int[][] tmpCount = new int[N][N];
+
                 for (int r = 0; r < N; r++) {
                     for (int c = 0; c < N; c++) {
                         if (grid[r][c] == 0) continue;
@@ -59,21 +66,18 @@ public class Main {
                         }
 
                         tmpGrid[nr][nc] = grid[r][c];
-                        tmpCount[nr][nc]++; 
+                        tmpCount[nr][nc]++;
                     }
                 }
 
                 for (int r = 0; r < N; r++) {
                     for (int c = 0; c < N; c++) {
-                        // System.out.print(tmpGrid[r][c] + " ");
                         if (tmpCount[r][c] > 1) {
                             tmpGrid[r][c] = 0;
                             tmpCount[r][c] = 0;
                         }
                     }
-                    // System.out.println();
                 }
-                // System.out.println("---");
                 grid = tmpGrid;
                 count = tmpCount;
             }
