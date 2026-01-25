@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -13,11 +14,10 @@ public class Main {
             this.id = id;
         }
 
-        // 우선 순위 = 무게 큼, 번호 큼
         @Override
         public int compareTo(Node o) {
-            if (this.w != o.w) return o.w - this.w;
-            return o.id - this.id;
+            if (this.w != o.w) return this.w - o.w;
+            return this.id - o.id;
         }
     }
 
@@ -32,28 +32,40 @@ public class Main {
     static int[] dr = {1, -1, 0, 0};
     static int[] dc = {0, 0, 1, -1};
 
-    static int MAX_SIZE = 4002;
+    static int MAX_SIZE = 4005;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        for (int tc = 0; tc < t; tc++) {
-            // 구슬의 개수
-            int n = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        String line = br.readLine();
+        if (line == null) return;
+        int t = Integer.parseInt(line.trim());
+
+        for (int tc = 1; tc <= t; tc++) {
+            line = br.readLine();
+            while (line != null && line.trim().isEmpty()) {
+                line = br.readLine();
+            }
+            if (line == null) break;
+            
+            int n = Integer.parseInt(line.trim());
             ArrayList<Node> nodeList = new ArrayList<>();
+
             for (int i = 0; i < n; i++) {
-                int x = (sc.nextInt() + 1000) * 2;
-                int y = (sc.nextInt() + 1000) * 2;
-                int w = sc.nextInt();
-                char d = sc.next().charAt(0);
+                st = new StringTokenizer(br.readLine());
+                int x = (Integer.parseInt(st.nextToken()) + 1000) * 2;
+                int y = (Integer.parseInt(st.nextToken()) + 1000) * 2;
+                int w = Integer.parseInt(st.nextToken());
+                char d = st.nextToken().charAt(0);
                 nodeList.add(new Node(y, x, w, getDirection(d), i + 1));
             }
             
-            // 마지막 충돌시간 측정
             int answer = -1;
             Node[][] map = new Node[MAX_SIZE][MAX_SIZE];
 
-            for (int i = 0; i < 4002; i++) {
+            for (int i = 0; i <= 4002; i++) {
                 for (Node node : nodeList) {
                     node.r += dr[node.d];
                     node.c += dc[node.d];
@@ -62,11 +74,12 @@ public class Main {
                 boolean crash = false;
                 for (Node node : nodeList) {
                     if (node.r < 0 || node.r >= MAX_SIZE || node.c < 0 || node.c >= MAX_SIZE) continue;
+                    
                     if (map[node.r][node.c] == null) {
                         map[node.r][node.c] = node;
                     } else {
                         crash = true;
-                        if (node.compareTo(map[node.r][node.c]) < 0) { // 우선순위 높은게 살아남음
+                        if (node.compareTo(map[node.r][node.c]) > 0) {
                             map[node.r][node.c] = node;
                         }
                     }
@@ -75,6 +88,7 @@ public class Main {
                 ArrayList<Node> nextNodeList = new ArrayList<>();
                 for (Node node : nodeList) {
                     if (node.r < 0 || node.r >= MAX_SIZE || node.c < 0 || node.c >= MAX_SIZE) continue;
+                    
                     if (map[node.r][node.c] != null) {
                         nextNodeList.add(map[node.r][node.c]);
                         map[node.r][node.c] = null;
@@ -85,7 +99,8 @@ public class Main {
                 if (crash) answer = i + 1;
                 if (nodeList.isEmpty()) break;
             }
-            System.out.println(answer);
+            sb.append(answer).append("\n");
         }
+        System.out.print(sb);
     }
 }
