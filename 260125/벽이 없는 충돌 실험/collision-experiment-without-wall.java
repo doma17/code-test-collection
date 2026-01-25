@@ -33,6 +33,7 @@ public class Main {
     static int[] dc = {0, 0, 1, -1};
 
     static int MAX_SIZE = 4005;
+    static Node[][] map = new Node[MAX_SIZE][MAX_SIZE];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -63,7 +64,6 @@ public class Main {
             }
             
             int answer = -1;
-            Node[][] map = new Node[MAX_SIZE][MAX_SIZE];
 
             for (int i = 0; i <= 4002; i++) {
                 for (Node node : nodeList) {
