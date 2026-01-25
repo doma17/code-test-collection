@@ -32,7 +32,7 @@ public class Main {
     static int[] dr = {1, -1, 0, 0};
     static int[] dc = {0, 0, 1, -1};
 
-    static int MAX_SIZE = 4000;
+    static int MAX_SIZE = 4002;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
