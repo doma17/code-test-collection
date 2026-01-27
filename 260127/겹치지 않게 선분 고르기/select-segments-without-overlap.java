@@ -27,20 +27,15 @@ public class Main {
         }
         Collections.sort(list);
 
-        int answer = 0;
+        int count = 0;
+        int lastEnd = -1;
         for (int i = 0; i < n; i++) {
-            int count = 1;
-            int last = list.get(i).r;
-
-            for (int j = i + 1; j < n; j++) {
-                Line o = list.get(j);
-                if (last < o.l) {
-                    last = o.r;
-                    count++;
-                }
+            Line o = list.get(i);
+            if (lastEnd < o.l) {
+                lastEnd = o.r;
+                count++;
             }
-            answer = Math.max(answer, count);
         }
-        System.out.println(answer);
+        System.out.println(count);
     }
 }
