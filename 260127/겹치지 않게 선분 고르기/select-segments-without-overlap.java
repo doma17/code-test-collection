@@ -11,8 +11,8 @@ public class Main {
         }
 
         public int compareTo(Line o) {
-            if (this.l != o.l) return this.l - o.l;
-            return this.r - o.r;
+            if (this.r != o.r) return this.r - o.r;
+            return this.l - o.l;
         }
     }
 
