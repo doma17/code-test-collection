@@ -1,4 +1,6 @@
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+
 public class Main {
 
     static int[] dr = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -8,24 +10,28 @@ public class Main {
     static int[][] num;
     static int[][] moveDir;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        n = Integer.parseInt(br.readLine());
+        StringTokenizer st;
         num = new int[n][n];
         for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
-                num[i][j] = sc.nextInt();
+                num[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
         moveDir = new int[n][n];
         for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
-                moveDir[i][j] = sc.nextInt() - 1;
+                moveDir[i][j] = Integer.parseInt(st.nextToken()) - 1;
             }
         }
-        int r = sc.nextInt() - 1;
-        int c = sc.nextInt() - 1;
+        st = new StringTokenizer(br.readLine());
+        int r = Integer.parseInt(st.nextToken()) - 1;
+        int c = Integer.parseInt(st.nextToken()) - 1;
         
         move(0, r, c);
         System.out.println(answer);
