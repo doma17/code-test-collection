@@ -3,9 +3,7 @@ import java.util.*;
 public class Main {
 
     static int n, m;
-
     static int[] arr;
-    static boolean[] used;
 
     // 1이상 N 이하의 숫자 중 M
     public static void main(String[] args) {
