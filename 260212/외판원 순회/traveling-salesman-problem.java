@@ -23,14 +23,14 @@ public class Main {
     }
 
     private static void choose(int idx, int sum, int spot) {
-        if (idx ==  n && spot == 0) {
-            answer = Math.min(answer, sum);
+        if (idx == n) {
+            if (spot == 0) answer = Math.min(answer, sum);
             return;
         }
 
-        int start = (idx == n - 1) ? 0 : 1;
-        for (int i = start; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             if (visited[i]) continue;
+            if (cost[spot][i] == 0) continue;
             visited[i] = true;
             choose(idx + 1, sum + cost[spot][i], i);
             visited[i] = false;
