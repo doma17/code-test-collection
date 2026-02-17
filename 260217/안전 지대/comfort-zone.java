@@ -7,7 +7,7 @@ public class Main {
     static boolean[][] visited;
 
     static int k = 1;
-    static int maxK = 0;
+    static int maxK = 1;
     static int answer = 0;
 
     public static void main(String[] args) {
