@@ -40,11 +40,15 @@ public class Main {
     }
 
     private static void dfs(int num) {
+        visited = new boolean[n][n];
+        int totalCount = 0;
         if (num == m) {
             for (int i = 0; i < k; i++) {
-                visited = new boolean[n][n];
-                answer = Math.max(answer, bfs(startPoints[i][0], startPoints[i][1]));
+                if (!visited[startPoints[i][0]][startPoints[i][1]])
+                    totalCount += bfs(startPoints[i][0], startPoints[i][1]);
             }
+            answer = Math.max(answer, totalCount);
+            return;
         }
 
         for (int i = 0; i < n; i++) {
