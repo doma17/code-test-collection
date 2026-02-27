@@ -22,8 +22,8 @@ public class Main {
 
     private static int bfs(int r, int c) {
         Queue<int[]> q = new LinkedList<>();
-        boolean[][] visited = new boolean[n][n];
-        int[][] step = new int[n][n];
+        boolean[][] visited = new boolean[n][m];
+        int[][] step = new int[n][m];
         q.add(new int[] {r, c});
         visited[r][c] = true;
         
@@ -35,7 +35,7 @@ public class Main {
                 int nr = next[0] + dr[i];
                 int nc = next[1] + dc[i];
 
-                if (nr < 0 || nr >= n || nc < 0 || nc >= n) continue;
+                if (nr < 0 || nr >= n || nc < 0 || nc >= m) continue;
                 if (visited[nr][nc]) continue;
                 if (a[nr][nc] == 0) continue; 
 
