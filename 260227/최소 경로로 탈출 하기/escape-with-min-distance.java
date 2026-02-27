@@ -44,8 +44,8 @@ public class Main {
                 q.add(new int[] {nr, nc});
             }
         }
-        if (visited[n - 1][n - 1])
-            return step[n - 1][n - 1];
+        if (visited[n - 1][m - 1])
+            return step[n - 1][m - 1];
         return -1;
     }
 }
