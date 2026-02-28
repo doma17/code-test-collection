@@ -33,6 +33,9 @@ public class Main {
                 q.add(new int[] {nr, nc});
             }
         }
-        System.out.println(a[r2][c2]);
+        if (a[r2][c2] == 0)
+            System.out.println(-1);
+        else 
+            System.out.println(a[r2][c2]);
     }
 }
