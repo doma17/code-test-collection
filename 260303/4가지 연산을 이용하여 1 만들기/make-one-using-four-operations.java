@@ -26,7 +26,7 @@ public class Main {
                 q.add(new Num(n.num - 1, n.count + 1));
             }
             // 2. +1
-            if (start < n.num && !visited[n.num + 1]) {
+            if (start > n.num && !visited[n.num + 1]) {
                 visited[n.num + 1] = true;
                 q.add(new Num(n.num + 1, n.count + 1));
             }
