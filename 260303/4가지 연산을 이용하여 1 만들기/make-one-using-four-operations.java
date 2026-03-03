@@ -10,7 +10,7 @@ public class Main {
     private static void bfs(int start) {
         Queue<Num> q = new LinkedList<>();
         q.add(new Num(start, 0));
-        boolean[] visited = new boolean[start + 1];
+        boolean[] visited = new boolean[start * 2 + 1];
         visited[start] = true;
 
         while (!q.isEmpty()) {
@@ -26,7 +26,7 @@ public class Main {
                 q.add(new Num(n.num - 1, n.count + 1));
             }
             // 2. +1
-            if (start > n.num && !visited[n.num + 1]) {
+            if (start * 2 > n.num && !visited[n.num + 1]) {
                 visited[n.num + 1] = true;
                 q.add(new Num(n.num + 1, n.count + 1));
             }
