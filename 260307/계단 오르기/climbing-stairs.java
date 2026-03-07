@@ -9,11 +9,6 @@ public class Main {
 
         memo = new int[n + 1];
         Arrays.fill(memo, -1);
-        
-        // for (int i = 1; i <= n; i++) {
-        //     System.out.print(memo[i] + " ");
-        // }
-        // System.out.println();
         System.out.println(dp(n));
     }
 
@@ -21,7 +16,7 @@ public class Main {
         if (num == 2 || num == 3) return 1;
         if (num < 3) return 0;
         if (memo[num] == -1)
-            memo[num] = dp(num - 2) + dp(num - 3);
+            memo[num] = (dp(num - 2) + dp(num - 3)) % 10007;
         return memo[num];
     }
 }
