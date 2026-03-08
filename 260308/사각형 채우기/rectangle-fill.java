@@ -17,7 +17,7 @@ public class Main {
         if (num == 2) memo[2] = 2;
         if (num == 3) memo[3] = 3;
         if (memo[num] == -1)
-            memo[num] = dp(num - 1) + dp(num - 2);
+            memo[num] = (dp(num - 1) + dp(num - 2)) % 10007;
         return memo[num];
     }
 }
