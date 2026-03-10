@@ -16,8 +16,10 @@ public class Main {
         if (num == 0) return 1;
         if (num == 1) return 2;
         if (num == 2) return 7;
-        if (memo[num] == -1)
+        if (memo[num] == -1) {
             memo[num] = (3 * dp(num - 1) + dp(num - 2) - dp(num - 3)) % 1000000007;
+            memo[num] = (memo[num] + 1000000007) % 1000000007;
+        }
         return memo[num];
     }
 }
