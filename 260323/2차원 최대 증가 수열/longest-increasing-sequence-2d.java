@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -9,15 +10,16 @@ public class Main {
             for (int j = 0; j < m; j++)
                 grid[i][j] = sc.nextInt();
         
-        int[][] dp = new int[n][n];
+        int[][] dp = new int[n][m];
         dp[0][0] = 1;
 
-        for (int i = 1; i < n; i++) {
-            for (int j = 1; j < m; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (i == 0 && j == 0) continue;
+
                 for (int x = 0; x < i; x++) {
                     for (int y = 0; y < j; y++) {
-                        if (grid[x][y] == 0) continue; 
-                        if (grid[x][y] < grid[i][j]) {
+                        if (dp[x][y] > 0 && grid[x][y] < grid[i][j]) {
                             dp[i][j] = Math.max(dp[i][j], dp[x][y] + 1);
                         }
                     }
