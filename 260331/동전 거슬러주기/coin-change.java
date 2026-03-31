@@ -8,6 +8,7 @@ public class Main {
         int[] coin = new int[n];
         for (int i = 0; i < n; i++)
             coin[i] = sc.nextInt();
+        Arrays.sort(coin);
         
         int INF = 1000000;
         int[] dp = new int[m + 1];
