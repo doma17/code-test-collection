@@ -14,8 +14,10 @@ public class Main {
         for (int i = 0; i <= m; i++)
             dp[i] = INF;
 
-        for (int i = 0; i < n; i++)
-            dp[coin[i]] = 1;
+        for (int i = 0; i < n; i++) {
+            if (coin[i] <= m)
+                dp[coin[i]] = 1;
+        }
         for (int i = 0; i <= m; i++) {
             for (int j = 0; j < n; j++) {
                 int ex = i - coin[j];
