@@ -28,6 +28,6 @@ public class Main {
 
         int result = dp[m];
         if (dp[m] == 0) result = -1;
-        System.out.println(dp[m]);
+        System.out.println(result);
     }
 }
