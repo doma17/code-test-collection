@@ -33,6 +33,9 @@ public class Main {
         //     if (dp[i] == MAX) System.out.print("- ");
         //     else System.out.print(dp[i] + " ");
         // }
-        System.out.println(dp[m]);
+        if (dp[m] == MAX)
+            System.out.println(-1);
+        else
+            System.out.println(dp[m]);
     }
 }
