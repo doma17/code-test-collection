@@ -18,8 +18,6 @@ public class Main {
         dp[0][0] = 0;
 
         for (int i = 1; i <= n; i++) {
-            dp[i][0] = dp[i - 1][0];
-
             for (int j = 0; j <= 3; j++) {
                 if (i >= 2 && dp[i - 2][j] != MIN) {
                     dp[i][j] = Math.max(dp[i][j], dp[i - 2][j] + coins[i - 1]);
