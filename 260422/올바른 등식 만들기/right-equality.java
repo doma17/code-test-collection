@@ -10,20 +10,20 @@ public class Main {
         }
 
         
-        int[][] dp = new int[N][41];
+        long[][] dp = new long[N][41];
         dp[0][20 + numbers[0]]++;
         dp[0][20 - numbers[0]]++;
 
         for (int i = 1; i < N; i++) {
             for (int j = 0; j <= 40; j++) {
                 if (0 <= j + numbers[i] && j + numbers[i] <= 40)
-                    dp[i][j] += dp[i - 1][j + numbers[i]];
+                    dp[i][j + numbers[i]] += dp[i - 1][j];
                 if (0 <= j - numbers[i] && j - numbers[i] <= 40)
-                    dp[i][j] += dp[i - 1][j - numbers[i]];
+                    dp[i][j - numbers[i]] += dp[i - 1][j];
             }
         }
 
-        // for (int i = 0; i < N; i++) {
+        // for (int i = N - 2; i < N; i++) {
         //     for (int j = 0; j <= 40; j++) {
         //         System.out.print(dp[i][j] + " ");
         //     }
