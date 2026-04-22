@@ -11,8 +11,8 @@ public class Main {
 
         
         int[][] dp = new int[N][41];
-        dp[0][20 + numbers[0]] = 1;
-        dp[0][20 - numbers[0]] = 1;
+        dp[0][20 + numbers[0]]++;
+        dp[0][20 - numbers[0]]++;
 
         for (int i = 1; i < N; i++) {
             for (int j = 0; j <= 40; j++) {
